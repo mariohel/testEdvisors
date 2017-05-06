@@ -1,0 +1,19 @@
+.StudentForm {
+    margin: 50px;   
+
+    md-input-container{
+        margin: 10px;
+    }
+    .submitButton{
+        margin-top: 20px;
+    }
+    .error {
+        color: red;
+        padding: 5px;
+        font-size: 10px;
+    }
+}
+
+i{
+    cursor: pointer;
+}

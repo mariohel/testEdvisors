@@ -1,0 +1,25 @@
+<md-card class="StudentForm">  
+  <form novalidate [formGroup]="studentForm" (ngSubmit)="onSubmit()" >
+    <md-input-container>
+      <input mdInput placeholder="Name" formControlName="Name" required>
+      <div class="error" *ngIf="hasError(studentForm.controls.Name)">
+        <p  [hidden]="!studentForm.controls.Name.errors.required">
+          Name is required
+        </p>
+      </div>
+    </md-input-container>
+   <md-input-container>
+      <input mdInput type="number" placeholder="Friends Number" formControlName="NumFriends">
+    </md-input-container> 
+    <button class="submitButton" md-raised-button type="submit" [disabled]="studentForm.pristine || studentForm.status!='VALID'" >Add</button>
+  </form>
+</md-card>
+<md-list *ngIf="students.length>0">
+  <md-list-item *ngFor="let student of students">
+    <p md-line>
+      <b> {{student.Name}} </b> -- {{student.NumFriends}} Friends
+      <i (click)="deleteStudent(student)" class="material-icons">delete</i>
+    </p>
+  </md-list-item>
+</md-list>
+

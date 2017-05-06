@@ -1,0 +1,26 @@
+<md-card class="TeacherForm">
+  <h1>Teacher</h1>
+  <form novalidate [formGroup]="teacherForm" (ngSubmit)="onSubmit()" >
+    <md-input-container>
+      <input mdInput placeholder="Name" formControlName="Name" required>
+      <div class="error" *ngIf="hasError(teacherForm.controls.Name)">
+        <p  [hidden]="!teacherForm.controls.Name.errors.required">
+          Name is required
+        </p>
+      </div>
+    </md-input-container>
+   <md-input-container>
+      <input mdInput placeholder="School" formControlName="School" required>
+      <div class="error" *ngIf="hasError(teacherForm.controls.School)">
+        <p  [hidden]="!teacherForm.controls.School.errors.required">
+          School is required
+        </p>
+      </div>
+    </md-input-container>
+    <h2>Students</h2>
+    <app-students (studentsUpdated)="updateStudents($event)"></app-students>  
+    <button class="submitButton" md-raised-button type="submit" [disabled]="teacherForm.pristine || teacherForm.status!='VALID'" >Submit</button>
+  </form>
+  <br>
+  {{dataSaved | json}}
+</md-card>
